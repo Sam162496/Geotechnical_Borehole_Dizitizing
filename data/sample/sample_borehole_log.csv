@@ -1,0 +1,30 @@
+borehole_id,depth_from_m,depth_to_m,sample_type,spt_n_value,description,water_table_m,remarks
+BH-01,0.0,0.5,SS,,Topsoil – dark brown silty clay with roots,,
+BH-01,0.5,2.0,SS,6,Soft brown silty CLAY, moist, low plasticity,,
+BH-01,2.0,4.5,SS,12,Firm grey sandy CLAY, moist to wet,,Water seepage at 3.5 m
+BH-01,4.5,7.0,SS,18,Stiff grey CLAY with occasional sand lenses,,
+BH-01,7.0,10.0,CS,28,Dense brown fine to medium SAND, moist,,
+BH-01,10.0,12.0,CS,42,Very dense grey coarse SAND with gravel,,
+BH-01,12.0,15.0,CS,50+,Hard grey GRAVEL with sand,,Refusal at 15 m
+BH-02,0.0,0.3,SS,,Topsoil – brown silty clay with organics,,
+BH-02,0.3,1.5,SS,4,Very soft dark brown organic CLAY,,
+BH-02,1.5,3.0,SS,8,Soft grey SILT, moist,,Water struck at 2.8 m
+BH-02,3.0,5.5,SS,14,Firm brown silty CLAY, moist,,
+BH-02,5.5,8.0,SS,22,Stiff reddish brown sandy CLAY,,
+BH-02,8.0,11.0,CS,35,Dense grey fine SAND, saturated,,
+BH-02,11.0,14.0,CS,48,Very dense grey GRAVEL with cobbles,,
+BH-02,14.0,16.0,RC,,,Rock core – moderately weathered SANDSTONE; RQD 65%
+BH-03,0.0,0.6,SS,,Topsoil – brown sandy CLAY with roots,,
+BH-03,0.6,2.5,SS,9,Firm tan silty CLAY,,
+BH-03,2.5,5.0,SS,16,Stiff brown CLAY with silt,,
+BH-03,5.0,7.5,SS,24,Very stiff grey sandy CLAY,,
+BH-03,7.5,10.0,CS,38,Dense grey gravelly SAND,,
+BH-03,10.0,13.0,CS,50+,Very dense grey GRAVEL,,
+BH-03,13.0,15.0,RC,,,Rock core – slightly weathered GRANITE; RQD 82%
+BH-04,0.0,0.4,SS,,Topsoil – black organic silty CLAY,,
+BH-04,0.4,2.0,SS,5,Soft grey CLAY, very moist,,
+BH-04,2.0,4.0,SS,11,Firm grey silty CLAY,,
+BH-04,4.0,6.5,SS,19,Stiff brown sandy CLAY,,
+BH-04,6.5,9.0,CS,30,Medium dense brown fine SAND,,
+BH-04,9.0,12.0,CS,44,Dense grey coarse SAND with gravel,,
+BH-04,12.0,15.0,CS,50+,Very dense grey GRAVEL and cobbles,,
