@@ -1,0 +1,22 @@
+# Core PDF processing
+pdfplumber>=0.11.0
+PyMuPDF>=1.23.0
+
+# Data processing
+pandas>=2.0.0
+numpy>=1.24.0
+openpyxl>=3.1.0
+
+# Fuzzy string matching (for "human-like" column mapping)
+rapidfuzz>=3.0.0
+
+# Image processing (for scanned PDF rendering)
+Pillow>=10.0.0
+
+# OCR (optional – only used when Tesseract is installed on the system)
+# Install system Tesseract first: sudo apt-get install tesseract-ocr
+# pytesseract>=0.3.10
+
+# Testing
+pytest>=8.0.0
+pytest-cov>=5.0.0
