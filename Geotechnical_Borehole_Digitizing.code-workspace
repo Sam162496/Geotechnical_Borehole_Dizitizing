@@ -1,0 +1,182 @@
+{
+  // VS Code workspace configuration for the Geotechnical Borehole Digitizing project.
+  // Open with: File > Open Workspace from File... > select this file.
+  "folders": [
+    {
+      "name": "Geotechnical Borehole Digitizing",
+      "path": "."
+    }
+  ],
+  "settings": {
+    // Python interpreter – adjust to match your virtual environment
+    "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+    "python.analysis.extraPaths": ["${workspaceFolder}"],
+
+    // Linting & formatting
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.linting.flake8Args": ["--max-line-length=120"],
+    "editor.formatOnSave": true,
+    "python.formatting.provider": "black",
+    "python.formatting.blackArgs": ["--line-length", "120"],
+
+    // Test discovery
+    "python.testing.pytestEnabled": true,
+    "python.testing.pytestArgs": ["tests", "-v"],
+    "python.testing.unittestEnabled": false,
+    "python.testing.autoTestDiscoverOnSaveEnabled": true,
+
+    // Editor quality-of-life
+    "editor.rulers": [120],
+    "editor.tabSize": 4,
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+
+    // File associations
+    "files.associations": {
+      "*.csv": "csv",
+      "requirements*.txt": "pip-requirements"
+    },
+
+    // Exclude generated artefacts from the file explorer
+    "files.exclude": {
+      "**/__pycache__": true,
+      "**/*.pyc": true,
+      "**/derby.log": true,
+      "**/metastore_db": true,
+      "**/spark-warehouse": true,
+      "output/": true
+    }
+  },
+  "extensions": {
+    "recommendations": [
+      // Python development
+      "ms-python.python",
+      "ms-python.vscode-pylance",
+      "ms-python.black-formatter",
+      "ms-python.flake8",
+
+      // Jupyter notebooks (useful for exploratory data analysis)
+      "ms-toolsai.jupyter",
+
+      // Data file viewers
+      "mechatroner.rainbow-csv",
+      "GrapeCity.gc-excelviewer",
+
+      // Git integration
+      "eamodio.gitlens",
+
+      // Spell checking in comments / docstrings
+      "streetsidesoftware.code-spell-checker"
+    ]
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Run Pipeline (CSV output)",
+        "type": "debugpy",
+        "request": "launch",
+        "module": "src.pipeline.borehole_pipeline",
+        "args": [
+          "--input", "data/sample/sample_borehole_log.csv",
+          "--output", "output/processed",
+          "--format", "csv"
+        ],
+        "cwd": "${workspaceFolder}",
+        "env": {
+          "PYTHONPATH": "${workspaceFolder}",
+          "PYSPARK_PYTHON": "${workspaceFolder}/.venv/bin/python"
+        },
+        "console": "integratedTerminal",
+        "justMyCode": false
+      },
+      {
+        "name": "Run Pipeline (Parquet output)",
+        "type": "debugpy",
+        "request": "launch",
+        "module": "src.pipeline.borehole_pipeline",
+        "args": [
+          "--input", "data/sample/sample_borehole_log.csv",
+          "--output", "output/processed",
+          "--format", "parquet"
+        ],
+        "cwd": "${workspaceFolder}",
+        "env": {
+          "PYTHONPATH": "${workspaceFolder}",
+          "PYSPARK_PYTHON": "${workspaceFolder}/.venv/bin/python"
+        },
+        "console": "integratedTerminal",
+        "justMyCode": false
+      },
+      {
+        "name": "Run Tests",
+        "type": "debugpy",
+        "request": "launch",
+        "module": "pytest",
+        "args": ["tests", "-v"],
+        "cwd": "${workspaceFolder}",
+        "env": {
+          "PYTHONPATH": "${workspaceFolder}"
+        },
+        "console": "integratedTerminal"
+      }
+    ]
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Install dependencies",
+        "type": "shell",
+        "command": "pip install -r requirements.txt",
+        "group": "build",
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "panel": "shared"
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "Run pipeline (CSV)",
+        "type": "shell",
+        "command": "python -m src.pipeline.borehole_pipeline --input data/sample/sample_borehole_log.csv --output output/processed --format csv",
+        "group": "build",
+        "options": {
+          "env": {
+            "PYTHONPATH": "${workspaceFolder}",
+            "PYSPARK_PYTHON": "${workspaceFolder}/.venv/bin/python"
+          }
+        },
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "panel": "shared"
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "Run tests",
+        "type": "shell",
+        "command": "pytest tests/ -v",
+        "group": {
+          "kind": "test",
+          "isDefault": true
+        },
+        "options": {
+          "env": {
+            "PYTHONPATH": "${workspaceFolder}"
+          }
+        },
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "panel": "shared"
+        },
+        "problemMatcher": []
+      }
+    ]
+  }
+}
