@@ -131,9 +131,10 @@ class TestNormalizeElevationValue:
         assert normalize_elevation_value("9999") is None
 
     def test_out_of_range_low(self):
-        # normalize_numeric_token strips the minus sign (OCR never returns signed
-        # numbers), so we test a large positive value above ELEV_MAX instead.
-        assert normalize_elevation_value("9999") is None
+        # ELEV_MIN is -100, but normalize_numeric_token strips minus signs (OCR
+        # never produces signed numbers).  The practical lower boundary is 0.
+        # A value of 0 is exactly at ELEV_MIN boundary (≥ -100) so it is valid.
+        assert normalize_elevation_value("0") == 0.0
 
     def test_ocr_corrected(self):
         # "l2.5" → "12.5" after OCR correction
